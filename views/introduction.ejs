@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>QueueLess | Hospital Queue Management</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    /* Landing Page Specific Styles */
+    .landing {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      background: linear-gradient(to right, #2d89ef, #36c3f7);
+      color: white;
+      padding: 20px;
+    }
+    .landing h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+    .landing p {
+      font-size: 20px;
+      margin-bottom: 40px;
+    }
+    .landing a {
+      display: inline-block;
+      background: white;
+      color: #2d89ef;
+      padding: 15px 30px;
+      border-radius: 50px;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 18px;
+      margin: 10px;
+      transition: 0.3s;
+    }
+    .landing a:hover {
+      background: #f0f0f0;
+      color: #1b5fa7;
+    }
+    .features {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 50px;
+      gap: 30px;
+    }
+    .feature-card {
+      background: rgba(255,255,255,0.1);
+      padding: 20px;
+      border-radius: 15px;
+      width: 250px;
+      transition: 0.3s;
+    }
+    .feature-card:hover {
+      transform: translateY(-5px);
+      background: rgba(255,255,255,0.2);
+    }
+    .feature-card i {
+      font-size: 36px;
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="landing">
+  <h1><i class="fas fa-hospital"></i> QueueLess</h1>
+  <p>Efficient Hospital Queue Management System<br>Reduce Waiting Time. Track Patients. Stay Organized.</p>
+
+  <div>
+    <a href="/signup"><i class="fas fa-user-plus"></i> Sign Up</a>
+    <a href="/login"><i class="fas fa-sign-in-alt"></i> Login</a>
+  </div>
+
+  <div class="features">
+    <div class="feature-card">
+      <i class="fas fa-user-nurse"></i>
+      <h3>Staff Dashboard</h3>
+      <p>Manage patient queue easily and track waiting patients in real-time.</p>
+    </div>
+    <div class="feature-card">
+      <i class="fas fa-user"></i>
+      <h3>Visitor Dashboard</h3>
+      <p>Join queue, view your position, and see your previous hospital visits.</p>
+    </div>
+    <div class="feature-card">
+      <i class="fas fa-clock"></i>
+      <h3>Save Time</h3>
+      <p>Reduce long waits and improve patient experience.</p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

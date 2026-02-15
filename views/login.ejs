@@ -1,0 +1,90 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <title>QueueLess | Login</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="card">
+    <h2>QueueLess Login</h2>
+
+    <form method="POST" action="/login">
+      <input type="email" name="email" placeholder="Email" required />
+      <input type="password" name="password" placeholder="Password" required />
+      <button type="submit">Login</button>
+    </form>
+
+    <p>New user? <a href="/signup">Signup here</a></p>
+  </div>
+</body>
+</html> -->
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hospital Queue | Login</title>
+  <link rel="stylesheet" href="/style.css">
+  <script>
+    function showFields() {
+      const role = document.getElementById("role").value;
+      if(role === "staff") {
+        document.getElementById("staffFields").style.display = "block";
+        document.getElementById("visitorFields").style.display = "none";
+      } else if(role === "visitor") {
+        document.getElementById("visitorFields").style.display = "block";
+        document.getElementById("staffFields").style.display = "none";
+      } else {
+        document.getElementById("staffFields").style.display = "none";
+        document.getElementById("visitorFields").style.display = "none";
+      }
+    }
+  </script>
+</head>
+<body>
+
+<div class="container">
+  <h2>Login</h2>
+
+  <!-- Role selection -->
+  <div class="card">
+    <label>Select Role:</label>
+    <select id="role" name="role" onchange="showFields()" required>
+      <option value="">--Select Role--</option>
+      <option value="staff">Staff</option>
+      <option value="visitor">Visitor</option>
+    </select>
+  </div>
+
+  <!-- Visitor Login -->
+  <div id="visitorFields" class="card" style="display:none;">
+      <form method="POST" action="/login">
+      <input type="hidden" name="role" value="visitor">
+      <label>Phone Number:</label>
+      <input type="text" name="phone" required>
+      <label>Password:</label>
+      <input type="password" name="password" required>
+      <button type="submit">Login as Visitor</button>
+    </form>
+
+  </div>
+
+  <!-- Staff Login -->
+  <div id="staffFields" class="card" style="display:none;">
+    <form method="POST" action="/login">
+      <input type="hidden" name="role" value="staff">
+      <label>Email:</label>
+      <input type="email" name="email" required>
+      <label>Password:</label>
+      <input type="password" name="password" required>
+      <button type="submit">Login as Staff</button>
+  </form>
+
+  </div>
+
+  <p>New user? <a href="/signup">Signup here</a></p>
+</div>
+
+</body>
+</html>

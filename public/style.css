@@ -1,0 +1,339 @@
+/* body {
+  font-family: Arial, sans-serif;
+  background: #f4f6f8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 60px;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  width: 300px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background: #2d89ef;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #1b5fa7;
+}
+
+a {
+  color: #2d89ef;
+  text-decoration: none;
+} */
+
+
+/* 
+body { 
+  font-family: Arial;
+  background: #f4f6f8;
+}
+
+.container { 
+  max-width: 700px; 
+  margin: 40px auto; 
+}
+
+.header { 
+  display:flex; 
+  justify-content:space-between; 
+  align-items:center; 
+  margin-bottom:20px; 
+}
+
+.logout-btn { 
+  background:#e74c3c; 
+  color:white; 
+  padding:8px 12px; 
+  text-decoration:none; 
+  border-radius:5px; 
+}
+
+.logout-btn:hover { 
+  background:#c0392b; 
+}
+
+.card { 
+  background:white; 
+  padding:20px; 
+  border-radius:10px; 
+  margin-bottom:20px; 
+  box-shadow:0 2px 8px rgba(0,0,0,0.1); 
+}
+
+.form-inline { 
+  display:flex; 
+  gap:10px; 
+}
+.form-inline input { 
+  flex:1; 
+  padding:8px; 
+  border-radius:5px; 
+  border:1px solid #ccc; 
+}
+
+.form-inline button { 
+  padding:8px 12px; 
+  border:none; 
+  background:#2d89ef; 
+  color:white; 
+  border-radius:5px; 
+  cursor:pointer; 
+}
+
+.form-inline button:hover { 
+  background:#1b5fa7; 
+}
+
+.queue-list { 
+  list-style:none; 
+  padding:0; 
+}
+.queue-list li { 
+  display:flex; 
+  justify-content:space-between; 
+  align-items:center; 
+  padding:8px 0; 
+  border-bottom:1px solid #eee; 
+}
+
+.time-badge { 
+  background:#bbb; 
+  color:white; 
+  padding:2px 6px; 
+  border-radius:5px; 
+  margin-left:10px; 
+}
+
+.queue-list button { 
+  background:#27ae60; 
+  color:white; 
+  border:none; 
+  padding:5px 8px; 
+  border-radius:5px; 
+  cursor:pointer; 
+}
+
+.queue-list button:hover { 
+  background:#1e8449; 
+} */
+
+
+body { font-family: Arial, sans-serif; background: #f4f6f8; margin:0; padding:0; }
+.container { max-width: 700px; margin: 40px auto; padding:0 10px; }
+.header { display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; }
+.logout-btn { background:#e74c3c; color:white; padding:8px 12px; text-decoration:none; border-radius:5px; }
+.logout-btn:hover { background:#c0392b; }
+.card { background:white; padding:20px; border-radius:10px; margin-bottom:20px; box-shadow:0 2px 8px rgba(0,0,0,0.1); }
+.form-inline { display:flex; gap:10px; flex-wrap: wrap; }
+.form-inline input { flex:1; padding:8px; border-radius:5px; border:1px solid #ccc; }
+.form-inline button { padding:8px 12px; border:none; background:#2d89ef; color:white; border-radius:5px; cursor:pointer; }
+.form-inline button:hover { background:#1b5fa7; }
+.queue-list { list-style:none; padding:0; }
+.queue-list li { display:flex; justify-content:space-between; align-items:center; padding:8px 0; border-bottom:1px solid #eee; }
+.time-badge { background:#bbb; color:white; padding:2px 6px; border-radius:5px; margin-left:10px; }
+.queue-list button { background:#27ae60; color:white; border:none; padding:5px 8px; border-radius:5px; cursor:pointer; }
+.queue-list button:hover { background:#1e8449; }
+.history-table { width:100%; border-collapse: collapse; }
+.history-table th, .history-table td { border:1px solid #ddd; padding:8px; text-align:left; }
+.history-table tr:nth-child(even){ background:#f2f2f2; }
+.history-table th { background:#2d89ef; color:white; }
+
+
+/* General page style */
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f6f8;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 400px;
+  margin: 60px auto;
+  padding: 20px;
+}
+
+/* Card style */
+.card {
+  background: white;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Labels and inputs */
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+}
+
+input, select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+/* Buttons */
+button {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  background: #2d89ef;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: #1b5fa7;
+}
+
+/* Role select dropdown */
+select {
+  font-size: 15px;
+  padding: 8px;
+}
+
+/* Links */
+p a {
+  color: #2d89ef;
+  text-decoration: none;
+}
+
+p a:hover {
+  text-decoration: underline;
+}
+.card {
+  background: #fff;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.card h3 {
+  margin-bottom: 15px;
+  color: #333;
+}
+
+/* ===== Premium Theme ===== */
+.premium-bg {
+  background: linear-gradient(135deg, #f5f7fa, #e4ebf5);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  padding: 20px 30px;
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  margin-bottom: 25px;
+}
+
+.logout-btn {
+  text-decoration: none;
+  background: #ff4d4d;
+  color: white;
+  padding: 10px 14px;
+  border-radius: 10px;
+}
+
+/* Cards */
+.card {
+  background: white;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+  margin-bottom: 25px;
+}
+
+/* Queue Position */
+.highlight {
+  background: linear-gradient(135deg, #2c7be5, #5fa8ff);
+  color: white;
+  text-align: center;
+}
+
+.position-number {
+  font-size: 4rem;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+/* Form */
+.form-inline {
+  display: flex;
+  gap: 10px;
+}
+
+.form-inline input {
+  flex: 1;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+
+.form-inline button {
+  background: #2c7be5;
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* Table */
+.history-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.history-table th {
+  background: #f1f4f9;
+  padding: 12px;
+}
+
+.history-table td {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+}
+
+.text-muted {
+  color: #888;
+}

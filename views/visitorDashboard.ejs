@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hospital Queue | Visitor Dashboard</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<body class="premium-bg">
+
+<div class="container">
+
+  <header class="header">
+    <h2>Welcome, <%= name %>!</h2>
+    <a href="/logout" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+  </header>
+
+  <!-- Join Queue Form -->
+  <div class="card">
+    <h3><i class="fas fa-plus-circle"></i> Join Queue</h3>
+    <form method="POST" action="/queue/visitor/add" class="form-inline">
+      <input type="text" name="purpose" placeholder="Purpose of Visit" required>
+      <button type="submit"><i class="fas fa-arrow-right"></i> Join</button>
+    </form>
+  </div>
+  <!-- Current Queue Position -->
+<div class="card highlight">
+  <h3><i class="fas fa-user-clock"></i> Your Queue Position</h3>
+
+  <% if(position === "Not in queue"){ %>
+    <p>You are not currently in the queue.</p>
+  <% } else { %>
+    <p>Your current position</p>
+    <div class="position-number"><%= position %></div>
+    <p>Please wait — you’ll be called soon.</p>
+  <% } %>
+</div>
+
+
+
+  <!-- Previous Visits -->
+  <div class="card">
+    <h3><i class="fas fa-history"></i> Previous Visits</h3>
+    <% if(!history || history.length===0){ %>
+      <p class="text-muted">No previous visits</p>
+    <% } else { %>
+      <table class="history-table">
+        <tr>
+          <th>Date & Time</th>
+          <th>Purpose</th>
+          <th>Status</th>
+        </tr>
+        <% history.forEach(h => { %>
+          <tr>
+            <td><%= new Date(h.time).toLocaleString() %></td>
+            <td><%= h.purpose %></td>
+            <td><%= h.status %></td>
+          </tr>
+        <% }) %>
+      </table>
+    <% } %>
+  </div>
+
+</div>
+</body>
+</html>
+
+<script>
+  setTimeout(() => location.reload(), 10000);
+</script>

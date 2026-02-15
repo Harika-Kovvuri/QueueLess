@@ -1,0 +1,99 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <title>QueueLess | Signup</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="card">
+    <h2>Create Account</h2>
+
+    <form method="POST" action="/signup">
+      <input type="text" name="name" placeholder="Full Name" required />
+      <input type="email" name="email" placeholder="Email" required />
+      <input type="password" name="password" placeholder="Password" required />
+      <button type="submit">Signup</button>
+    </form>
+
+    <p>Already have an account? <a href="/">Login</a></p>
+  </div>
+</body>
+</html> -->
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hospital Queue | Signup</title>
+  <link rel="stylesheet" href="/style.css">
+  <script>
+    function showSignupFields() {
+      const role = document.getElementById("role").value;
+      if(role === "staff") {
+        document.getElementById("staffFields").style.display = "block";
+        document.getElementById("visitorFields").style.display = "none";
+      } else if(role === "visitor") {
+        document.getElementById("visitorFields").style.display = "block";
+        document.getElementById("staffFields").style.display = "none";
+      } else {
+        document.getElementById("staffFields").style.display = "none";
+        document.getElementById("visitorFields").style.display = "none";
+      }
+    }
+  </script>
+</head>
+<body>
+
+<div class="container">
+  <h2>Create Account</h2>
+
+  <!-- Role Selection -->
+  <div class="card">
+    <label>Select Role:</label>
+    <select id="role" name="role" onchange="showSignupFields()" required>
+      <option value="">--Select Role--</option>
+      <option value="staff">Staff</option>
+      <option value="visitor">Visitor</option>
+    </select>
+  </div>
+
+  <!-- Visitor Signup -->
+  <div id="visitorFields" class="card" style="display:none;">
+    <form method="POST" action="/signup">
+      <input type="hidden" name="role" value="visitor">
+      <label>Name:</label>
+      <input type="text" name="name" required>
+
+      <label>Phone Number:</label>
+      <input type="text" name="phone" required>
+
+      <label>Password:</label>
+      <input type="password" name="password" required>
+
+      <button type="submit">Sign Up as Visitor</button>
+    </form>
+  </div>
+
+  <!-- Staff Signup -->
+  <div id="staffFields" class="card" style="display:none;">
+    <form method="POST" action="/signup">
+      <input type="hidden" name="role" value="staff">
+      <label>Name:</label>
+      <input type="text" name="name" required>
+
+      <label>Email:</label>
+      <input type="email" name="email" required>
+
+      <label>Password:</label>
+      <input type="password" name="password" required>
+
+      <button type="submit">Sign Up as Staff</button>
+    </form>
+  </div>
+
+  <p>Already have an account? <a href="/">Login here</a></p>
+</div>
+
+</body>
+</html>
