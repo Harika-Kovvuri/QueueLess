@@ -1,69 +1,107 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-  <title>Hospital Queue | Visitor Dashboard</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QueueLess | Visitor Dashboard</title>
   <link rel="stylesheet" href="/style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
-<body class="premium-bg">
 
-<div class="container">
+<body>
 
-  <header class="header">
-    <h2>Welcome, <%= name %>!</h2>
-    <a href="/logout" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
-  </header>
+  <div class="container">
 
-  <!-- Join Queue Form -->
-  <div class="card">
-    <h3><i class="fas fa-plus-circle"></i> Join Queue</h3>
-    <form method="POST" action="/queue/visitor/add" class="form-inline">
-      <input type="text" name="purpose" placeholder="Purpose of Visit" required>
-      <button type="submit"><i class="fas fa-arrow-right"></i> Join</button>
-    </form>
+    <header class="header">
+      <h2><i class="fas fa-wave-square" style="color: var(--secondary); margin-right: 10px;"></i> QueueLess</h2>
+      <div style="display: flex; align-items: center; gap: 20px;">
+        <span style="font-weight: 500;">Hello, <span style="color: var(--primary);">
+            <%= name %>
+          </span></span>
+        <a href="/logout" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+      </div>
+    </header>
+
+    <!-- Join Queue Form -->
+    <div class="card">
+      <h3 style="margin-bottom: 20px;"><i class="fas fa-plus-circle" style="color: var(--primary);"></i> Register for
+        Queue</h3>
+      <form method="POST" action="/queue/visitor/add">
+        <div style="display: flex; gap: 15px;">
+          <input type="text" name="purpose" placeholder="Enter purpose of visit (e.g. Consultation)" required
+            style="flex: 1;">
+          <button type="submit" style="margin-top: 0; padding: 0 30px;">Join Queue</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Current Queue Position -->
+    <div class="card queue-position-card">
+      <h3 style="margin-bottom: 20px;"><i class="fas fa-user-clock" style="color: var(--secondary);"></i> Live Status
+      </h3>
+
+      <% if(position==="Not in queue" ){ %>
+        <div style="padding: 20px; color: var(--text-muted);">
+          <i class="fas fa-info-circle" style="font-size: 2rem; margin-bottom: 10px; display: block;"></i>
+          <p>You are not currently in the queue. Register above to get your spot.</p>
+        </div>
+        <% } else { %>
+          <div class="pos-label">Your Spot</div>
+          <div class="pos-number">
+            <%= position %>
+          </div>
+          <p style="color: var(--text-muted); font-weight: 500;">We'll notify you when it's your turn. Please stay
+            nearby.</p>
+          <% } %>
+    </div>
+
+    <!-- Previous Visits -->
+    <div class="card">
+      <h3 style="margin-bottom: 20px;"><i class="fas fa-history" style="color: var(--accent);"></i> Visit History</h3>
+      <% if(!history || history.length===0){ %>
+        <p style="color: var(--text-muted); text-align: center; padding: 20px;">No previous visits recorded.</p>
+        <% } else { %>
+          <div style="overflow-x: auto;">
+            <table style="width: 100%; border-collapse: separate; border-spacing: 0 8px;">
+              <thead>
+                <tr style="text-align: left; color: var(--text-muted); font-size: 0.85rem;">
+                  <th style="padding: 10px;">DATE & TIME</th>
+                  <th style="padding: 10px;">PURPOSE</th>
+                  <th style="padding: 10px;">STATUS</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% history.forEach(h=> { %>
+                  <tr class="queue-item">
+                    <td style="padding: 15px; border-radius: 12px 0 0 12px;">
+                      <%= new Date(h.time).toLocaleString() %>
+                    </td>
+                    <td style="padding: 15px; font-weight: 600;">
+                      <%= h.purpose %>
+                    </td>
+                    <td style="padding: 15px; border-radius: 0 12px 12px 0;">
+                      <span class="time-badge"
+                        style="background: <%= h.status === 'Served' ? 'rgba(16, 185, 129, 0.1)' : 'rgba(37, 99, 235, 0.1)' %>; color: <%= h.status === 'Served' ? '#059669' : 'var(--primary)' %>">
+                        <%= h.status %>
+                      </span>
+                    </td>
+                  </tr>
+                  <% }) %>
+              </tbody>
+            </table>
+          </div>
+          <% } %>
+    </div>
+
   </div>
-  <!-- Current Queue Position -->
-<div class="card highlight">
-  <h3><i class="fas fa-user-clock"></i> Your Queue Position</h3>
 
-  <% if(position === "Not in queue"){ %>
-    <p>You are not currently in the queue.</p>
-  <% } else { %>
-    <p>Your current position</p>
-    <div class="position-number"><%= position %></div>
-    <p>Please wait — you’ll be called soon.</p>
-  <% } %>
-</div>
+  <script>
+    // Refresh position automatically
+    setTimeout(() => location.reload(), 15000);
+  </script>
 
-
-
-  <!-- Previous Visits -->
-  <div class="card">
-    <h3><i class="fas fa-history"></i> Previous Visits</h3>
-    <% if(!history || history.length===0){ %>
-      <p class="text-muted">No previous visits</p>
-    <% } else { %>
-      <table class="history-table">
-        <tr>
-          <th>Date & Time</th>
-          <th>Purpose</th>
-          <th>Status</th>
-        </tr>
-        <% history.forEach(h => { %>
-          <tr>
-            <td><%= new Date(h.time).toLocaleString() %></td>
-            <td><%= h.purpose %></td>
-            <td><%= h.status %></td>
-          </tr>
-        <% }) %>
-      </table>
-    <% } %>
-  </div>
-
-</div>
 </body>
-</html>
 
-<script>
-  setTimeout(() => location.reload(), 10000);
-</script>
+</html>

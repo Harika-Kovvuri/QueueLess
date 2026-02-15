@@ -1,99 +1,139 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>QueueLess | Hospital Queue Management</title>
   <link rel="stylesheet" href="/style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    /* Landing Page Specific Styles */
-    .landing {
+    /* Landing Page Extensions */
+    .landing-wrapper {
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      height: 100vh;
-      text-align: center;
-      background: linear-gradient(to right, #2d89ef, #36c3f7);
-      color: white;
-      padding: 20px;
+      padding: 40px 20px;
     }
-    .landing h1 {
-      font-size: 48px;
+
+    .hero-h1 {
+      font-size: 4rem;
+      font-weight: 900;
       margin-bottom: 20px;
+      color: var(--primary);
+      letter-spacing: -2px;
     }
-    .landing p {
-      font-size: 20px;
+
+    .hero-p {
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      max-width: 600px;
       margin-bottom: 40px;
+      line-height: 1.8;
     }
-    .landing a {
-      display: inline-block;
-      background: white;
-      color: #2d89ef;
-      padding: 15px 30px;
-      border-radius: 50px;
-      font-weight: bold;
-      text-decoration: none;
-      font-size: 18px;
-      margin: 10px;
-      transition: 0.3s;
-    }
-    .landing a:hover {
-      background: #f0f0f0;
-      color: #1b5fa7;
-    }
-    .features {
+
+    .btn-group {
       display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-top: 50px;
-      gap: 30px;
+      gap: 20px;
+      margin-bottom: 60px;
     }
-    .feature-card {
-      background: rgba(255,255,255,0.1);
-      padding: 20px;
-      border-radius: 15px;
-      width: 250px;
+
+    .landing-card {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: var(--card-shadow);
+      width: 300px;
       transition: 0.3s;
+      border: 1px solid var(--glass-border);
     }
-    .feature-card:hover {
-      transform: translateY(-5px);
-      background: rgba(255,255,255,0.2);
+
+    .landing-card:hover {
+      transform: translateY(-10px);
+      border-color: var(--primary);
     }
-    .feature-card i {
-      font-size: 36px;
+
+    .landing-card i {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .landing-card h3 {
+      font-weight: 800;
       margin-bottom: 15px;
+      color: var(--text-main);
+    }
+
+    .landing-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 768px) {
+      .hero-h1 {
+        font-size: 2.5rem;
+      }
+
+      .features {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .btn-group {
+        flex-direction: column;
+        width: 100%;
+        max-width: 300px;
+      }
     }
   </style>
 </head>
+
 <body>
 
-<div class="landing">
-  <h1><i class="fas fa-hospital"></i> QueueLess</h1>
-  <p>Efficient Hospital Queue Management System<br>Reduce Waiting Time. Track Patients. Stay Organized.</p>
+  <div class="landing-wrapper">
+    <div style="text-align: center; animation: slideUp 0.8s ease-out;">
+      <h1 class="hero-h1"><i class="fas fa-wave-square" style="color: var(--accent);"></i> QueueLess</h1>
+      <p class="hero-p">Experience the future of clinical efficiency. Minimizing wait times, maximizing patient care.
+        Join the wait-free revolution today.</p>
 
-  <div>
-    <a href="/signup"><i class="fas fa-user-plus"></i> Sign Up</a>
-    <a href="/login"><i class="fas fa-sign-in-alt"></i> Login</a>
-  </div>
+      <div class="btn-group">
+        <a href="/login" class="button"
+          style="text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 10px; padding: 18px 40px; font-size: 1.1rem; border-radius: 100px;">
+          <i class="fas fa-sign-in-alt"></i> Access Dashboard
+        </a>
+        <a href="/signup" class="button"
+          style="text-decoration: none; background: white; color: var(--primary); border: 2px solid var(--primary); display: flex; align-items: center; justify-content: center; gap: 10px; padding: 18px 40px; font-size: 1.1rem; border-radius: 100px;">
+          <i class="fas fa-user-plus"></i> New Account
+        </a>
+      </div>
+    </div>
 
-  <div class="features">
-    <div class="feature-card">
-      <i class="fas fa-user-nurse"></i>
-      <h3>Staff Dashboard</h3>
-      <p>Manage patient queue easily and track waiting patients in real-time.</p>
-    </div>
-    <div class="feature-card">
-      <i class="fas fa-user"></i>
-      <h3>Visitor Dashboard</h3>
-      <p>Join queue, view your position, and see your previous hospital visits.</p>
-    </div>
-    <div class="feature-card">
-      <i class="fas fa-clock"></i>
-      <h3>Save Time</h3>
-      <p>Reduce long waits and improve patient experience.</p>
+    <div class="features" style="display: flex; gap: 30px; animation: slideUp 1s ease-out;">
+      <div class="landing-card">
+        <i class="fas fa-user-md"></i>
+        <h3>For Providers</h3>
+        <p>Streamline patient intake, monitor the waiting room in real-time, and focus on delivering care.</p>
+      </div>
+
+      <div class="landing-card">
+        <i class="fas fa-clock-rotate-left"></i>
+        <h3>For Patients</h3>
+        <p>Register from anywhere, track your position live, and only arrive when it's your turn.</p>
+      </div>
+
+      <div class="landing-card">
+        <i class="fas fa-chart-line"></i>
+        <h3>Efficiency First</h3>
+        <p>Built with modern web standards to ensure lightning-fast performance and reliable queue tracking.</p>
+      </div>
     </div>
   </div>
-</div>
 
 </body>
+
 </html>

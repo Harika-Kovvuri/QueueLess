@@ -23,77 +23,106 @@
 
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-  <title>Hospital Queue | Signup</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QueueLess | Signup</title>
   <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script>
     function showSignupFields() {
       const role = document.getElementById("role").value;
-      if(role === "staff") {
-        document.getElementById("staffFields").style.display = "block";
-        document.getElementById("visitorFields").style.display = "none";
-      } else if(role === "visitor") {
-        document.getElementById("visitorFields").style.display = "block";
-        document.getElementById("staffFields").style.display = "none";
+      const staffFields = document.getElementById("staffFields");
+      const visitorFields = document.getElementById("visitorFields");
+
+      if (role === "staff") {
+        staffFields.style.display = "block";
+        visitorFields.style.display = "none";
+      } else if (role === "visitor") {
+        visitorFields.style.display = "block";
+        staffFields.style.display = "none";
       } else {
-        document.getElementById("staffFields").style.display = "none";
-        document.getElementById("visitorFields").style.display = "none";
+        staffFields.style.display = "none";
+        visitorFields.style.display = "none";
       }
     }
   </script>
 </head>
+
 <body>
 
-<div class="container">
-  <h2>Create Account</h2>
+  <div class="auth-wrapper">
+    <div class="card auth-card">
+      <div class="logo-section">
+        <h2>QueueLess</h2>
+        <p style="color: var(--text-muted); margin-top: -20px; margin-bottom: 25px;">Join us for a wait-free experience
+        </p>
+      </div>
 
-  <!-- Role Selection -->
-  <div class="card">
-    <label>Select Role:</label>
-    <select id="role" name="role" onchange="showSignupFields()" required>
-      <option value="">--Select Role--</option>
-      <option value="staff">Staff</option>
-      <option value="visitor">Visitor</option>
-    </select>
+      <!-- Role Selection -->
+      <div style="margin-bottom: 25px;">
+        <label for="role">Tell Us Who You Are</label>
+        <select id="role" name="role" onchange="showSignupFields()" required style="width: 100%;">
+          <option value="">-- Choose Role --</option>
+          <option value="staff">⚕️ Staff / Doctor</option>
+          <option value="visitor">👤 Patient / Visitor</option>
+        </select>
+      </div>
+
+      <!-- Visitor Signup -->
+      <div id="visitorFields" style="display:none;">
+        <form method="POST" action="/signup">
+          <input type="hidden" name="role" value="visitor">
+          <div class="input-group">
+            <label>Full Name</label>
+            <input type="text" name="name" placeholder="E.g. John Doe" required>
+          </div>
+          <div class="input-group">
+            <label>Phone Number</label>
+            <input type="text" name="phone" placeholder="Enter phone number" required>
+          </div>
+          <div class="input-group">
+            <label>Create Password</label>
+            <input type="password" name="password" placeholder="••••••••" required>
+          </div>
+          <button type="submit">
+            <i class="fas fa-user-plus"></i> Sign Up as Visitor
+          </button>
+        </form>
+      </div>
+
+      <!-- Staff Signup -->
+      <div id="staffFields" style="display:none;">
+        <form method="POST" action="/signup">
+          <input type="hidden" name="role" value="staff">
+          <div class="input-group">
+            <label>Full Name</label>
+            <input type="text" name="name" placeholder="E.g. Dr. Smith" required>
+          </div>
+          <div class="input-group">
+            <label>Email Address</label>
+            <input type="email" name="email" placeholder="name@hospital.com" required>
+          </div>
+          <div class="input-group">
+            <label>Create Password</label>
+            <input type="password" name="password" placeholder="••••••••" required>
+          </div>
+          <button type="submit">
+            <i class="fas fa-user-md"></i> Sign Up as Staff
+          </button>
+        </form>
+      </div>
+
+      <p style="margin-top: 25px; color: var(--text-muted);">
+        Already have an account? <a href="/"
+          style="color: var(--primary); font-weight: 600; text-decoration: none;">Login here</a>
+      </p>
+    </div>
   </div>
-
-  <!-- Visitor Signup -->
-  <div id="visitorFields" class="card" style="display:none;">
-    <form method="POST" action="/signup">
-      <input type="hidden" name="role" value="visitor">
-      <label>Name:</label>
-      <input type="text" name="name" required>
-
-      <label>Phone Number:</label>
-      <input type="text" name="phone" required>
-
-      <label>Password:</label>
-      <input type="password" name="password" required>
-
-      <button type="submit">Sign Up as Visitor</button>
-    </form>
-  </div>
-
-  <!-- Staff Signup -->
-  <div id="staffFields" class="card" style="display:none;">
-    <form method="POST" action="/signup">
-      <input type="hidden" name="role" value="staff">
-      <label>Name:</label>
-      <input type="text" name="name" required>
-
-      <label>Email:</label>
-      <input type="email" name="email" required>
-
-      <label>Password:</label>
-      <input type="password" name="password" required>
-
-      <button type="submit">Sign Up as Staff</button>
-    </form>
-  </div>
-
-  <p>Already have an account? <a href="/">Login here</a></p>
-</div>
 
 </body>
+
 </html>
